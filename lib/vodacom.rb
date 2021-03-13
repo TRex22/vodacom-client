@@ -1,4 +1,5 @@
 require 'httparty'
+# require 'httparty_with_cookies'
 require 'nokogiri'
 
 require 'vodacom/version'

@@ -1,0 +1,9 @@
+{"body"=>
+  {"messages"=>[], "result"=>{"result"=>true, "redirect"=>"/cloud/mobile/summary"}, "successful"=>false, "code"=>0},
+ "headers"=>
+  {"date"=>["Sat, 13 Mar 2021 20:30:54 GMT"],
+   "content-type"=>["application/json;charset=UTF-8"],
+   "transfer-encoding"=>["chunked"],
+   "connection"=>["close"],
+   "set-cookie"=>
+    [
