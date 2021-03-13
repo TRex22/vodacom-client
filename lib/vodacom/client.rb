@@ -10,17 +10,8 @@ module Vodacom
       :base_path,
       :port,
       :login_response,
-      # :gateway_session,
-      # :gateway_session_expiry,
-      # :vopToken,
-      # :vopToken_expiry,
-      # :vod_web_auth_token,
-      # :vod_web_auth_token_expiry,
-      # :jsessionid,
-      # :jsessionid_expiry,
-      # :oauth2_apps_token_db,
-      # :oauth2_apps_token_db_expiry,
-      :raw_cookie
+      :raw_cookie,
+      :expiry
 
     def initialize(username:, password:, base_path: 'https://www.vodacom.co.za/cloud', port: 80)
       @username = username
@@ -41,7 +32,7 @@ module Vodacom
     def balance(phone_number)
       start_time = get_micro_second_time
 
-      login unless raw_cookie
+      login unless (raw_cookie && (expiry.to_i > Time.now.to_i))
       response = HTTParty.send(
         :get,
         "#{BALANCE_PATH}#{phone_number}",
@@ -80,11 +71,7 @@ module Vodacom
       @login_response = construct_response_object(response, LOGIN_PATH, start_time, end_time)
 
       @raw_cookie = @login_response.dig("headers").dig("set-cookie")
-      # @gateway_session, _ = parse_cookie(raw_cookie, 'gatewaysession')
-      # @vopToken, @vopToken_expiry = parse_cookie(raw_cookie, 'vopToken')
-      # @vod_web_auth_token, @vod_web_auth_token_expiry = parse_cookie(raw_cookie, 'vod-web-auth-token')
-      # @jsessionid, @jsessionid_expiry = parse_cookie(raw_cookie, 'JSESSIONID')
-      # @oauth2_apps_token_db, @oauth2_apps_token_db_expiry = parse_cookie(raw_cookie, 'OAuth2AppsTokenDB')
+      _, @expiry = parse_cookie(raw_cookie, 'OAuth2AppsTokenDB')
     end
 
     # def authorise_and_send(http_method:, path:, payload: {}, params: {})

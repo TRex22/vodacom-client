@@ -23,7 +23,10 @@ Or install it yourself as:
 
 ```ruby
   require 'vodacom'
-  client  = Vodacom::Client.new(key: 'your key', secret: 'your secret')
+  client  = Vodacom::Client.new(username: 'your key', password: 'your password from vodacom website')
+
+  phone_number = "27...."
+  client.balance(phone_number)
 ```
 
 ### Endpoints
