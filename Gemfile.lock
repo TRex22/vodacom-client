@@ -4,7 +4,7 @@ PATH
     vodacom (0.0.2)
       active_attr (~> 0.15)
       httparty (~> 0.18)
-      nokogiri (~> 1.11.2)
+      nokogiri (>= 1.11.2, < 1.13.0)
 
 GEM
   remote: https://rubygems.org/
@@ -67,7 +67,7 @@ GEM
       ruby-progressbar
     mocha (1.11.2)
     multi_xml (0.6.0)
-    nokogiri (1.11.2-x86_64-linux)
+    nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
     pry (0.14.0)
       coderay (~> 1.1)
