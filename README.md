@@ -23,10 +23,12 @@ Or install it yourself as:
 
 ```ruby
   require 'vodacom'
-  client  = Vodacom::Client.new(username: 'your key', password: 'your password from vodacom website')
+  client  = Vodacom::Client.new(username: 'your key', password: 'your password from vodacom website', use_v4: true)
 
   phone_number = "27...."
   client.balance(phone_number)
+
+  # use_v4 determines which API version is used
 ```
 
 ### Endpoints

@@ -4,6 +4,7 @@ module Vodacom
 
     LOGIN_PATH = 'https://www.vodacom.co.za/cloud/login/v3/login'
     BALANCE_PATH = 'https://www.vodacom.co.za/cloud/rest/balances/v3/bundle/balances/'
+    BALANCE_V4_PATH = 'https://www.vodacom.co.za/cloud/rest/balances/v3/bundle/balances/'
 
     attr_reader :username,
       :password,
@@ -11,13 +12,15 @@ module Vodacom
       :port,
       :login_response,
       :raw_cookie,
-      :expiry
+      :expiry,
+      :use_v4
 
-    def initialize(username:, password:, base_path: 'https://www.vodacom.co.za/cloud', port: 80)
+    def initialize(username:, password:, base_path: 'https://www.vodacom.co.za/cloud', port: 80, use_v4: false)
       @username = username
       @password = password
       @base_path = base_path
       @port = port
+      @use_v4 = use_v4
     end
 
     def self.compatible_api_version
@@ -32,10 +35,16 @@ module Vodacom
     def balance(phone_number)
       start_time = get_micro_second_time
 
+      if use_v4
+        balance_path = "#{BALANCE_V4_PATH}#{phone_number}"
+      else
+        balance_path = "#{BALANCE_PATH}#{phone_number}"
+      end
+
       login unless (raw_cookie && (expiry.to_i > Time.now.to_i))
       response = HTTParty.send(
         :get,
-        "#{BALANCE_PATH}#{phone_number}",
+        balance_path,
         headers: {
           'Content-Type': 'application/json',
           'Accept': '*/*',
