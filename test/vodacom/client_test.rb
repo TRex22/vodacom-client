@@ -6,10 +6,10 @@ class VodacomTest < Minitest::Test
   end
 
   def test_that_the_client_has_compatible_api_version
-    assert_equal 'v3', Vodacom::Client.compatible_api_version
+    assert_equal 'v4', Vodacom::Client.compatible_api_version
   end
 
   def test_that_the_client_has_api_version
-    assert_equal 'v3 2021-03-13', Vodacom::Client.api_version
+    assert_equal 'v4 2024-03-26', Vodacom::Client.api_version
   end
 end

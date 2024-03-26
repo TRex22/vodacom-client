@@ -24,12 +24,12 @@ module Vodacom
     end
 
     def self.compatible_api_version
-      'v3'
+      'v4'
     end
 
     # This is the version of the API docs this client was built off-of
     def self.api_version
-      'v3 2021-03-13'
+      'v4 2024-03-26'
     end
 
     def balance(phone_number)
