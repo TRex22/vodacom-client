@@ -4,7 +4,7 @@ module Vodacom
 
     LOGIN_PATH = 'https://www.vodacom.co.za/cloud/login/v3/login'
     BALANCE_PATH = 'https://www.vodacom.co.za/cloud/rest/balances/v3/bundle/balances/'
-    BALANCE_V4_PATH = 'https://www.vodacom.co.za/cloud/rest/balances/v3/bundle/balances/'
+    BALANCE_V4_PATH = 'https://www.vodacom.co.za/cloud/rest/balances/v4/bundle/balances/'
 
     attr_reader :username,
       :password,

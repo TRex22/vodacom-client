@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    vodacom (0.0.9)
+    vodacom (0.0.10)
       active_attr (~> 0.16.0)
       httparty (~> 0.21.0)
       nokogiri (~> 1.16.3)
